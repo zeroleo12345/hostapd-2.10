@@ -1,3 +1,4 @@
+## zlx start
 ifdef test
 OBJS += test_main.o
 ALL=test_hostapd libhostapd.so loader
@@ -6,6 +7,11 @@ OBJS += main.o
 ALL=hostapd hostapd_cli
 endif
 CONFIG_FILE = .config
+
+CFLAGS = -MMD -Wall -g -ggdb -fPIC
+CFLAGS += -I/usr/include/x86_64-linux-gnu/openssl
+LDFLAGS = -L/usr/lib/x86_64-linux-gnu/
+## zlx end
 
 include ../src/build.rules
 
@@ -26,12 +32,6 @@ ifndef LIBS_s
 LIBS_s := $(LIBS)
 endif
 endif
-
-# zlx start
-# CFLAGS = -MMD -O2 -Wall -g
-CFLAGS = -MMD -Wall -g -ggdb -fPIC
-LDFLAGS=-L/usr/local/ssl/lib
-# zlx end
 
 CFLAGS += $(EXTRA_CFLAGS)
 CFLAGS += -I$(abspath ../src)
