@@ -10,6 +10,7 @@ cd /app/third_party/hostapd-2.10/hostapd
 ## 在容器内编译: libhostapd.so, loader, test_hostapd
 ``` bash
 # 不需要 ./configure
+make clean
 make test=1
 ```
 
